@@ -1,0 +1,44 @@
+# === Environment & Konfigurasi Sensitif ===
+.env
+.env.local
+.env.*.local
+config.php
+config/database.php
+*.local.php
+
+# === Dependencies (Composer) ===
+/vendor/
+composer.phar
+
+# === Log & Cache ===
+*.log
+/logs/
+/cache/
+/tmp/
+
+# === Session & Upload ===
+/sessions/
+/uploads/*
+!/uploads/.gitkeep
+
+# === Database Dumps / Backup ===
+*.sql
+*.sqlite
+*.db
+*.bak
+
+# === IDE / Editor ===
+.vscode/
+.idea/
+*.swp
+*.swo
+.DS_Store
+Thumbs.db
+
+# === PHP Bawaan ===
+*.phpunit.result.cache
+/build/
+/coverage/
+
+# === OS Files ===
+desktop.ini

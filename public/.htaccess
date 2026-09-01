@@ -1,0 +1,12 @@
+#mau blokir semua akses di public kecuali index
+
+Options -Indexes
+<IfModule mod_rewrite.c>
+    Options +FollowSymLinks
+    RewriteEngine on
+    #kalo ada request folder diabaikan
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteRule ^(.*)$ index.php?$1 [L]  
+
+</IfModule>
