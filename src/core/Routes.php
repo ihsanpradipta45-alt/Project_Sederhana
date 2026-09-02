@@ -7,6 +7,8 @@ class Routes{
         $router = new App();
         $router->defaultController('cekRoutes');
         $router->get('cekRoutes/index', ['cekRoutes','index']);
+
+        $router->run();
     }
 }
 

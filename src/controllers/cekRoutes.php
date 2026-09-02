@@ -1,8 +1,8 @@
 <?php
 
-class cekRoutes{
+class cekRoutes extends baseController{
     function index(){
-    echo "hello from cekRoutes";
+    $this->view('loginPage/login');
 }
 
 }

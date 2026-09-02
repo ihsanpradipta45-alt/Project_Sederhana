@@ -8,7 +8,7 @@ if(!session_id()){
 require_once '../src/config/default.php';
 require_once '../src/core/autoload.php';
 
-$routes = new App();
+$routes = new Routes();
 $routes->run();
 
 
