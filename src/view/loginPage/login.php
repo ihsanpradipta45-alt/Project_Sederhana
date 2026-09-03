@@ -22,7 +22,7 @@
     <h1 class="login-title">Selamat datang di Invenio</h1>
     <p class="login-subtitle">Masuk untuk mengelola inventaris Anda.</p>
 
-    <form>
+    <form action = "loginConfiguration.php" method = "POST"> 
       <div class="field">
         <label for="email">Alamat Email</label>
         <div class="input-with-icon">
@@ -30,7 +30,7 @@
             <rect x="2" y="4" width="20" height="16" rx="2"></rect>
             <path d="m22 6-10 7L2 6"></path>
           </svg>
-          <input type="email" id="email" placeholder="admin@invenio.com">
+          <input type="email" id="email" name = "email" placeholder="admin@invenio.com" required>
         </div>
       </div>
 

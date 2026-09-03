@@ -26,7 +26,10 @@ class App{
 
     public function handlers(String $method, String $path, $handlers){
         // key dibentuk dari method + path -> unik per kombinasi, tanpa nyentuh array $handlers
-        $key = $method.trim($path, '/');
+        //sama aja concat $this->handlers[$path.$handlers] = []
+        $key = $method.trim($path, '/'); 
+        // $this->handlers = ['GETcekRoutes/index' => ['cekRoutes', 'index']];
+        //intinya sama menyimpan antara key dan index daripada handlers
         $this->handlers[$key] = [
             'method'  => $method,
             'path'    => $path,
@@ -41,8 +44,10 @@ class App{
 
         // gabungkan array segmen URL jadi string, biar formatnya sama kayak path yang didaftarkan manual
         $urlPath = implode('/', array_filter($url, fn($seg) => $seg !== ''));
+        // $requestkey = GET.cekRoutes/index
         $requestKey = $request_method.$urlPath;
-
+        //konsep foreach sama dengan
+        //$this->handlers = ['GETcekRoutes/index' => ['cekRoutes', 'index']];
         foreach($this->handlers as $key => $handler){
             if($key == $requestKey){
                 if(isset($handler['handler'][0]) && file_exists(__DIR__.'/../controllers/'.$handler['handler'][0].'.php')){
