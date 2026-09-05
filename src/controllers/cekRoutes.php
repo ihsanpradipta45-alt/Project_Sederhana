@@ -5,6 +5,7 @@ class cekRoutes extends baseController{
     $this->view('loginPage/login');
 }
 
+
 }
 
 

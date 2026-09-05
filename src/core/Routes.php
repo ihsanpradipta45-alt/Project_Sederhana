@@ -7,6 +7,9 @@ class Routes{
         $router = new App();
         $router->defaultController('cekRoutes');
         $router->get('cekRoutes/index', ['cekRoutes','index']);
+        $router->post('dashboardController/dashboard', ['dashboardController','dashboard']);
+        $router->post('routeAddUser/loginPage', ['routeAddUser','loginPage']);
+        $router->post('routerAddUser/addUser', ['routerAddUser','addUser']);
 
         $router->run();
     }

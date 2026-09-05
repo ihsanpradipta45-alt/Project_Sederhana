@@ -5,6 +5,6 @@ class LoadConnection extends Connection{
         parent::__construct("localhost", "root", "", "projek_sederhana");
     }
 }
-$connection = new LoadConnection();
-$connection->connect();
+// tidak perlu membuat objek baru karena ini inheritance
+// dipanggil hanya seperti di file model karena butuh koneksi
 ?>
