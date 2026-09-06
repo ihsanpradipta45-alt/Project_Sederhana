@@ -1,6 +1,6 @@
 <?php
 //kalo mau buat objek harus di reuire dulu karena php ga bisa kenal class nya
-require_once __DIR__.'../config/loadConnection.php';
+require_once __DIR__.'/../../config/loadConnection.php';
 class  modelLogin{
     private $koneksi;
     // disini butuh koneksi karena di mysqli prepare butuh koneksi

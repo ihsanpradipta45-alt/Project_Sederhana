@@ -7,17 +7,26 @@ class loginAddUser extends baseController{
         $this->koneksi = $db->connect();
 
     }
-    public function addUser($username, $password ,$firstName , $lastName, $role){
+    public function addUser($username, $password ,$firstName , $lastName, $role,$photo){
         if($_SERVER['REQUEST_METHOD'] == 'POST'){
         $username = $_POST['username'];
         $password = $_POST['password'];
         $firstName = $_POST['first_name'];
         $lastName = $_POST['last_name'];
         $role = $_POST['role'];
-        $excute = 0; 
+        $photo = $_POST['photo'];
+        if(isset($_FILES['photo']) && $_FILES['photo']['error']=== 0 ){
+        $path = pathinfo($_FILES['photo']['name'], PATHINFO_EXTENSION);
+        $photo = uniqid() . '.' . $path;
+        $target_path = __DIR__.'/../uploads/'.$path;
+        if(file_exists( $target_path )){
+            move_uploaded_file($_FILES['photo']['tmp_name'], $target_path);
+        }
+
+        }
         require_once __DIR__.'/../login/addUser';
         $db = new addUser();
-        $user = $db->addUser($username, $password, $firstName, $lastName, $role);
+        $user = $db->addUser($username, $password, $firstName, $lastName, $role,$photo);
         if($user === True){
             $this->redirect('routeAddUser/addUser');
 

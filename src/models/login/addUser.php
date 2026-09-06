@@ -7,7 +7,7 @@ class addUser{
         $db = new loadConnection();
         $this->koneksi = $db->connect();
     }
-    public function addUser($email,$password,$firstName,$lastName,$role){
+    public function addUser($email,$password,$firstName,$lastName,$role,$photo){
         $email = htmlspecialchars($email);
         $sql = "SELECT * FROM user WHERE email = ?";
         $stmt = mysqli_prepare($this->koneksi, $sql);
@@ -18,9 +18,9 @@ class addUser{
             return false;
         }else{
             $passwordHash = password_hash($password,PASSWORD_DEFAULT);
-            $insertsql = 'INSERT INTO user (email,password,firstName,lastName,role)';
+            $insertsql = "INSERT INTO user (email,password,firstName,lastName,role,photo) VALUES(?,?,?,?,?,?)";
             $insertStmt = mysqli_prepare($this->koneksi, $insertsql);
-            mysqli_stmt_bind_param($insertStmt,'sssss', $email, $passwordHash, $firstName, $lastName, $role);
+            mysqli_stmt_bind_param($insertStmt,'sssss', $email, $passwordHash, $firstName, $lastName, $role,$photo);
             mysqli_stmt_execute($insertStmt);
             return true;
 

@@ -1,8 +1,10 @@
 <?php
 require_once __DIR__.'/../config/loadConnection.php';
-session_start();
+if(session_status() == PHP_SESSION_NONE){
+    session_start();
+}
 
-class loginController extends baseController {
+class loginConfiguration extends baseController {
 
     private $koneksi;
 
@@ -15,7 +17,7 @@ class loginController extends baseController {
         if($_SERVER['REQUEST_METHOD'] == 'POST'){
             $email = $_POST['email'];
             $password = $_POST['password'];
-            require_once __DIR__.'/../models/modelLogin.php';
+            require_once __DIR__.'/../models/login/modelLogin.php';
 
             $model = new modelLogin();
             $user = $model->login($email);
@@ -24,13 +26,17 @@ class loginController extends baseController {
                 $_SESSION['role'] = $user['role'];
                 $_SESSION['user_id'] = $user['id'];
                 $_SESSION['email'] = $user['email'];
+
                 if($user['role'] == 'admin'){
-                $this->redirect('/dashboardPage/adminDashboard.php');
-            }else{
-                $this->redirect('/dashboardPage/dashboard.php');
+                    $this->redirect('/routeDashboard/adminDashboard');
+                } else {
+                    $this->redirect('/dashboardController/dashboard');
+                }
+            } else {
+                $_SESSION['error'] = 'Email atau password salah';
+                $this->redirect('/routeAddUser/loginPage');
             }
-        }
+        } // <-- ini penutup untuk if(POST) yang tadinya HILANG
     }
-}
 }
 ?>

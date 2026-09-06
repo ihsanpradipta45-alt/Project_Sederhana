@@ -22,7 +22,7 @@
     <h1 class="login-title">Selamat datang di Invenio</h1>
     <p class="login-subtitle">Masuk untuk mengelola inventaris Anda.</p>
 
-    <form action = "loginConfiguration.php" method = "POST"> 
+    <form action = "loginConfiguration/login" method = "POST"> 
       <div class="field">
         <label for="email">Alamat Email</label>
         <div class="input-with-icon">
