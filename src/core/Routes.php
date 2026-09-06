@@ -13,9 +13,11 @@ class Routes{
         $router->get('routeAddUser/loginPage', ['routeAddUser','loginPage']);
         $router->get('routeAddUser/addUser', ['routeAddUser','addUser']); //Menambahkan route get untuk ke halaman regis
         $router->get('routeDashboard/dasboardPage', ['routeDashboard','dashboardPage']);
+        $router->get('routeDashboard/dashboardAddUser', ['routeDashBoard','dashboardAddUser']);
         
 
-        // ROUTE POST (proses data / submit form)
+        // ROUTE POST (proses data / submit form jika menggunakan method POST
+        $router->post('loginAddUser/addUser', ['loginAddUser','addUser']);
         $router->post('loginConfiguration/login', ['loginConfiguration','login']);
         $router->post('routeAddUser/addUser', ['routeAddUser','addUser']);
         $router->post('routeVerification/adminDashboard', ['routeDashboard','adminDashboard']);

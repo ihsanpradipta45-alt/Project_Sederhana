@@ -66,7 +66,7 @@
       </button>
     </form>
 
-    <p class="login-footer">Belum punya akun? <a href="routeAddUser/addUser">Minta Akses</a></p>
+    <p class="login-footer">Belum punya akun? <a href="addAccount.php">Minta Akses</a></p>
   </div>
 </div>
 

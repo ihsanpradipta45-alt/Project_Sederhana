@@ -16,8 +16,8 @@ class routeVerification extends baseController{
             session_start();
         }
         if(!isset($_SESSION['user_id']) || $_SESSION['role'] !== 'admin'){
-            $this->redirect('/routeDashboard/loginPage');
-            return;
+            $this->view('dashboardPage/dashboard');
+            return; //biar stop disini ketika salah
         }
         $this->view('dashboardPage/adminDashboard');
     }

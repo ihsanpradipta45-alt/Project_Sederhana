@@ -28,15 +28,15 @@ class loginConfiguration extends baseController {
                 $_SESSION['email'] = $user['email'];
 
                 if($user['role'] == 'admin'){
-                    $this->redirect('/routeDashboard/adminDashboard');
+                    $this->redirect('/routeVerification/adminDashboard');
                 } else {
-                    $this->redirect('/dashboardController/dashboard');
+                    $this->redirect('/cekRoutes/index');
                 }
             } else {
                 $_SESSION['error'] = 'Email atau password salah';
                 $this->redirect('/routeAddUser/loginPage');
             }
-        } // <-- ini penutup untuk if(POST) yang tadinya HILANG
+        }
     }
 }
 ?>
