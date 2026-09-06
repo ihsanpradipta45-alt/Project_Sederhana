@@ -11,6 +11,7 @@ class Routes{
         $router->get('cekRoutes/index', ['cekRoutes','index']);
         $router->get('dashboardController/dashboard', ['dashboardController','dashboard']);
         $router->get('routeAddUser/loginPage', ['routeAddUser','loginPage']);
+        $router->get('routeAddUser/addUser', ['routeAddUser','addUser']);
         $router->get('routeDashboard/dasboardPage', ['routeDashboard','dashboardPage']);
         
 
