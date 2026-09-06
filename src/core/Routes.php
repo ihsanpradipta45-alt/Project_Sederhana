@@ -11,7 +11,7 @@ class Routes{
         $router->get('cekRoutes/index', ['cekRoutes','index']);
         $router->get('dashboardController/dashboard', ['dashboardController','dashboard']);
         $router->get('routeAddUser/loginPage', ['routeAddUser','loginPage']);
-        $router->get('routeAddUser/addUser', ['routeAddUser','addUser']);
+        $router->get('routeAddUser/addUser', ['routeAddUser','addUser']); //Menambahkan route get untuk ke halaman regis
         $router->get('routeDashboard/dasboardPage', ['routeDashboard','dashboardPage']);
         
 
