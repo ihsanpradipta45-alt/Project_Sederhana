@@ -1,4 +1,5 @@
 <?php
+//alur logika dari file login
 require_once __DIR__.'/../config/loadConnection.php';
 if(session_status() == PHP_SESSION_NONE){
     session_start();
@@ -30,13 +31,10 @@ class loginConfiguration extends baseController {
                 if($user['role'] == 'admin'){
                     $this->redirect('/routeVerification/adminDashboard');
                 } else {
-                    $this->redirect('/cekRoutes/index');
+                    $this->redirect('/routeDashboard/dashboardPage');
                 }
-            } else {
-                $_SESSION['error'] = 'Email atau password salah';
-                $this->redirect('/routeAddUser/loginPage');
             }
         }
     }
-}
+}    
 ?>

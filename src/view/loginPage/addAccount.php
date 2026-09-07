@@ -1,4 +1,4 @@
-<form action="loginAddUser/addUser" method="POST">
+<form action="index.php?url=loginAddUser/addUser" method="POST">
     <input type="text" name="firstName" placeholder="Alex">
     <input type="text" name="lastName" placeholder="Cassandra">
     <input type="email" name="username" placeholder="admin@invenio.com">

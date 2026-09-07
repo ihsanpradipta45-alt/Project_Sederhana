@@ -20,7 +20,7 @@ class addUser{
             $passwordHash = password_hash($password,PASSWORD_DEFAULT);
             $insertsql = "INSERT INTO user (email,password,firstName,lastName,role,photo) VALUES(?,?,?,?,?,?)";
             $insertStmt = mysqli_prepare($this->koneksi, $insertsql);
-            mysqli_stmt_bind_param($insertStmt,'sssss', $email, $passwordHash, $firstName, $lastName, $role,$photo);
+            mysqli_stmt_bind_param($insertStmt,'ssssss', $email, $passwordHash, $firstName, $lastName, $role,$photo);
             mysqli_stmt_execute($insertStmt);
             return true;
 

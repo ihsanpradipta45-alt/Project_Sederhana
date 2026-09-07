@@ -22,7 +22,7 @@
     <h1 class="login-title">Selamat datang di Invenio</h1>
     <p class="login-subtitle">Masuk untuk mengelola inventaris Anda.</p>
 
-    <form action = "loginConfiguration/login" method = "POST"> 
+    <form action = "index.php?url=loginConfiguration/login" method = "POST"> 
       <div class="field">
         <label for="email">Alamat Email</label>
         <div class="input-with-icon">
@@ -44,7 +44,7 @@
             <rect x="4" y="11" width="16" height="9" rx="2"></rect>
             <path d="M8 11V7a4 4 0 0 1 8 0v4"></path>
           </svg>
-          <input type="password" id="password" name = "password"value="password">
+          <input type="password" id="password" name = "password"placeholder="masukan kata sandi">
           <svg class="icon icon-toggle" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
             <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8Z"></path>
             <circle cx="12" cy="12" r="3"></circle>
@@ -66,7 +66,7 @@
       </button>
     </form>
 
-    <p class="login-footer">Belum punya akun? <a href="addAccount.php">Minta Akses</a></p>
+    <p class="login-footer">Belum punya akun? <a href="index.php?url=routeDashboard/dashboardAddUser">Minta Akses</a></p>//langsung arahin ke file yang view add acc
   </div>
 </div>
 

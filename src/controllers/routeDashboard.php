@@ -8,6 +8,10 @@ public function dashboardAddUser(){
     $this->view("loginPage/addAccount");
 
 }
+public function dashboardAdmin(){
+    echo('halo admin');
+    //$this->view("dashboardPage/adminDashboard");
+}
 }
 
 

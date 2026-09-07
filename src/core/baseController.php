@@ -6,23 +6,22 @@ class baseController{
     // $data [] untuk parameter data yang dikirimkan
     public function view($view, $data = []){
     // kalo misal ada file nya maka akan mengarahlan ke file tsb
-    if(count($data)){
         extract($data);
+        require_once __DIR__ .'/../view/'.$view.'.php';
     }
-    require_once __DIR__ .'/../view/'.$view.'.php';
-    }
+    
 
     public function redirect($url){
-        if(file_exists(__DIR__.'/../view/'.$url.'.php')){
-            header('Location: '.$url);
+            header('Location:index.php?url='.ltrim($url,'/'));// disamakan wkatu kirim action pada html
             exit();
         }
-    }
+    
     public function model($model){
         require_once __DIR__.'/../models/'.$model.'.php';
         return new $model;
     }
 }
+
 
 
 

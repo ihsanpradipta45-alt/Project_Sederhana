@@ -74,10 +74,14 @@ class App{
         call_user_func_array([$this->controllerFile, $this->controllerMethod], $this->param);
     }
 
-    public function getUrl(){
-        $url = rtrim($_SERVER['QUERY_STRING'], '/');
+   public function getUrl(){
+    if(isset($_GET['url'])){
+        $url = rtrim($_GET['url'], '/');
         $url = filter_var($url, FILTER_SANITIZE_URL);
-        $url = explode('/', $url);
-        return $url;
+        return explode('/', $url);
     }
+    // fungsi return disini adalah memberikan halaman default ketika user
+    //membuka website tanpa menuliskan url apapun
+    return ['cekRoutes','index'];
+}
 }
