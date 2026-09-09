@@ -9,9 +9,8 @@ class Routes{
 
         // ROUTE GET (nampilin halaman)
         $router->get('cekRoutes/index', ['cekRoutes','index']);
-        $router->get('dashboardController/dashboard', ['dashboardController','dashboard']);
         $router->get('routeAddUser/loginPage', ['routeAddUser','loginPage']);
-        $router->get('routeAddUser/addUser', ['routeAddUser','addUser']); //Menambahkan route get untuk ke halaman regis
+        //$router->get('routeAddUser/addUser', ['routeAddUser','addUser']); //Menambahkan route get untuk ke halaman regis
         $router->get('routeDashboard/dashboardPage', ['routeDashboard','dashboardPage']);
         $router->get('routeDashboard/dashboardAddUser', ['routeDashboard','dashboardAddUser']);
         $router->get('routeVerification/adminDashboard', ['routeVerification','adminDashboard']);
@@ -21,7 +20,7 @@ class Routes{
         // ROUTE POST (proses data / submit form jika menggunakan method POST
         $router->post('loginAddUser/addUser', ['loginAddUser','addUser']);
         $router->post('loginConfiguration/login', ['loginConfiguration','login']);
-        $router->post('routeAddUser/addUser', ['routeAddUser','addUser']);
+        //$router->post('routeAddUser/addUser', ['routeAddUser','addUser']);
         //$router->post('routeVerification/adminDashboard', ['routeDashboard','adminDashboard']);
 
         $router->run();

@@ -1,5 +1,5 @@
 <?php
-define('BASEURL' ,'http://localhost/project/')
+define('BASEURL' ,'http://localhost/project/');
 
 
 

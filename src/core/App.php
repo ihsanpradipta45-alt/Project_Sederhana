@@ -27,7 +27,7 @@ class App{
     public function handlers(String $method, String $path, $handlers){
         // key dibentuk dari method + path -> unik per kombinasi, tanpa nyentuh array $handlers
         //sama aja concat $this->handlers[$path.$handlers] = []
-        $key = $method.trim($path, '/'); 
+        $key = $method . trim($path, '/'); 
         // $this->handlers = ['GETcekRoutes/index' => ['cekRoutes', 'index']];
         //intinya sama menyimpan antara key dan index daripada handlers
         $this->handlers[$key] = [

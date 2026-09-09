@@ -6,7 +6,7 @@ class routeAddUser extends baseController{
         
     }
     public function addUser(){
-        $this->view("loginAddUser/addUser");
+        $this->view("loginPage/addAccount");
     }
 
 }
