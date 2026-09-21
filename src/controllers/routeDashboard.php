@@ -9,9 +9,10 @@ public function dashboardAddUser(){
 
 }
 public function dashboardAdmin(){
-    echo('halo admin');
-    //$this->view("dashboardPage/adminDashboard");
+
+    $this->view("dashboardPage/adminDashboard");
 }
+
 }
 
 

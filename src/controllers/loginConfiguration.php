@@ -25,7 +25,7 @@ class loginConfiguration extends baseController {
 
             if($user && password_verify($password, $user['password'])){
                 $_SESSION['role'] = $user['role'];
-                $_SESSION['user_id'] = $user['id'];
+                $_SESSION['user_id'] = $user['user_id'];
                 $_SESSION['email'] = $user['email'];
 
                 if($user['role'] == 'admin'){
