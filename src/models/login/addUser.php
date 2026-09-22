@@ -7,9 +7,11 @@ require_once __DIR__ . '/../../config/loadConnection.php';
 class addUser{
     private $koneksi;
     public function __construct(){
-        $db = new loadConnection();
+        $db = new LoadConnection();
         $this->koneksi = $db->connect();
     }
+
+
     public function addUser($email,$password,$firstName,$lastName,$role){
         $email = htmlspecialchars($email);
         $sql = "SELECT * FROM user WHERE email = ?";
@@ -33,6 +35,7 @@ class addUser{
     }
 
 }
+
 
 
 

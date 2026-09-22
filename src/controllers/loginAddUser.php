@@ -4,7 +4,7 @@ require_once __DIR__.'/../config/loadConnection.php';
 class loginAddUser extends baseController{
     private $koneksi;
     public function __construct() {
-        $db = new loadConnection();
+        $db = new LoadConnection();
         $this->koneksi = $db->connect();
 
     }
