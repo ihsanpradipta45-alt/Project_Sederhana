@@ -6,6 +6,7 @@ class App{
     private $param = [];
     private const DEFAULT_GET = 'GET';
     private const DEFAULT_POST = 'POST';
+    //fungsi handler dikasih jadi array biat memudahkan untuk cek melalui index
     private $handlers = [];
 
     public function defaultController($controllerFile){
@@ -37,12 +38,14 @@ class App{
         ];
     }
 
+    //yang menjalankan alur logika penyocokan antara requestKey dengan Key
     public function run(){
         $excute = 0;
         $request_method = $_SERVER['REQUEST_METHOD'];
         $url = $this->getUrl();
 
         // gabungkan array segmen URL jadi string, biar formatnya sama kayak path yang didaftarkan manual
+        // berfungsi semisal routeDashboard//dashboardAddUser slash dobel tengah dibuang menjadi routeDashboard/dashboardAddUser
         $urlPath = implode('/', array_filter($url, fn($seg) => $seg !== ''));
         // $requestkey = GET.cekRoutes/index
         $requestKey = $request_method.$urlPath;
@@ -50,12 +53,16 @@ class App{
         //$this->handlers = ['GETcekRoutes/index' => ['cekRoutes', 'index']];
         foreach($this->handlers as $key => $handler){
             if($key == $requestKey){
+                //fungsi handler dikasih jadi array biat memudahkan untuk cek melalui index
+                //keduanya cek nama file
                 if(isset($handler['handler'][0]) && file_exists(__DIR__.'/../controllers/'.$handler['handler'][0].'.php')){
                     $this->controllerFile = $handler['handler'][0];
                     unset($url[0]);
                 }
                 require_once __DIR__.'/../controllers/'.$this->controllerFile.'.php';
                 $excute = 1;
+                //membuat objek baru dikarenakan berhasil mengeksejusi bahwa file itu ada
+                //dilanjut menggunakan method
                 $this->controllerFile = new $this->controllerFile;
 
                 if(isset($handler['handler'][1]) && method_exists($this->controllerFile, $handler['handler'][1])){
@@ -74,10 +81,12 @@ class App{
         call_user_func_array([$this->controllerFile, $this->controllerMethod], $this->param);
     }
 
-   public function getUrl(){
+public function getUrl(){
+    #url yang di param $_GET berasal dari index.php?url=routeDashboard/dashboardAddUser
     if(isset($_GET['url'])){
         $url = rtrim($_GET['url'], '/');
         $url = filter_var($url, FILTER_SANITIZE_URL);
+        // $url dipecah menjadi array lalu digabung lagi waktu di run bagian implode untuk jadi string
         return explode('/', $url);
     }
     // fungsi return disini adalah memberikan halaman default ketika user

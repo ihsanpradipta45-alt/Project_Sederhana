@@ -1,4 +1,5 @@
 <?php
+// class ini berfungsi untuk menjalankan ketika user menekan pada sebuah tombol
 class routeDashboard extends baseController {
 
 public function dashboardPage(){
@@ -12,6 +13,16 @@ public function dashboardAdmin(){
 
     $this->view("dashboardPage/adminDashboard");
 }
+public function addProduct(){
+    $this->view("dashboardPage/addProduct");
+}
+public function product(){
+    $this->view("dashboardPage/products");
+}
+public function dashboard(){
+    $this->view("dashboardPage/dashboard");
+}
+
 
 }
 

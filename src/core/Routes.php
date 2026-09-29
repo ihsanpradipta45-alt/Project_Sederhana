@@ -7,7 +7,7 @@ class Routes{
         $router = new App();
         $router->defaultController('cekRoutes');
 
-        // ROUTE GET (nampilin halaman)
+        // ROUTE GET (berfungsi sebagai sistem untuk menampilkan halaman)
         $router->get('cekRoutes/index', ['cekRoutes','index']);
         $router->get('routeAddUser/loginPage', ['routeAddUser','loginPage']);
         //$router->get('routeAddUser/addUser', ['routeAddUser','addUser']); //Menambahkan route get untuk ke halaman regis
@@ -15,6 +15,9 @@ class Routes{
         $router->get('routeDashboard/dashboardAddUser', ['routeDashboard','dashboardAddUser']);
         $router->get('routeVerification/adminDashboard', ['routeVerification','adminDashboard']);
         $router->get('routeDashboard/dashboardAdmin', ['routeDashboard','dashboardAdmin']);
+        $router->get('routeDashboard/addProduct',['routeDashboard','addProduct']);
+        $router->get('routeDashboard/dashboard',['routeDashboard','dashboard']);
+        $router->get('routeDashboard/product',['routeDashboard','product']);
 
 
         // ROUTE POST (proses data / submit form jika menggunakan method POST

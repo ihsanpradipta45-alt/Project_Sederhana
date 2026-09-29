@@ -27,13 +27,17 @@
     </div>
 
     <nav class="nav">
-      <a class="nav-item active" href="dashboard.html">
+      <a class="nav-item active" href="index.php?url=routeDashboard/dashboard">
         <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1"></rect><rect x="14" y="3" width="7" height="7" rx="1"></rect><rect x="14" y="14" width="7" height="7" rx="1"></rect><rect x="3" y="14" width="7" height="7" rx="1"></rect></svg>
         Dashboard
       </a>
-      <a class="nav-item" href="products.html">
+      <a class="nav-item" href="index.php?url=routeDashboard/addProduct">
         <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="4" rx="1"></rect><rect x="4" y="10" width="16" height="10" rx="1"></rect><line x1="9" y1="14" x2="15" y2="14"></line></svg>
-        Produk
+        Tambah Produk
+      </a>
+      <a class="nav-item" href="index.php?url=routeDashboard/product">
+        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="4" rx="1"></rect><rect x="4" y="10" width="16" height="10" rx="1"></rect><line x1="9" y1="14" x2="15" y2="14"></line></svg>
+        Lihat Produk
       </a>
       <a class="nav-item" href="#">
         <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2 3 7l9 5 9-5-9-5Z"></path><path d="m3 12 9 5 9-5"></path></svg>
@@ -50,7 +54,7 @@
     </nav>
 
     <div class="nav-footer">
-      <a class="nav-item" href="login.html">
+      <a class="nav-item" href="index.php">
         <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path><polyline points="16 17 21 12 16 7"></polyline><line x1="21" y1="12" x2="9" y2="12"></line></svg>
         Keluar
       </a>
@@ -89,10 +93,10 @@
           <svg class="icon" style="width:16px;height:16px" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
           Ekspor Laporan
         </button>
-        <button class="btn btn-solid">
+        <a class="btn btn-solid" href="index.php?url=routeDashboard/addProduct">
           <svg class="icon" style="width:16px;height:16px" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
           Tambah Produk
-        </button>
+        </a>
       </div>
     </div>
 
@@ -152,7 +156,7 @@
       <div class="panel">
         <div class="panel-head">
           <h2>Produk Baru Ditambahkan</h2>
-          <a class="panel-link" href="products.html">Lihat Semua</a>
+          <a class="panel-link" href="index.php?url=routeDashboard/product">Lihat Semua</a>
         </div>
         <table>
           <thead>

@@ -6,7 +6,7 @@ class routeVerification extends baseController{
             session_start();
         }
         if(!isset($_SESSION['user_id'])){
-            $this->redirect('/routeDashboard/dashboardPage');
+            $this->redirect('routeDashboard/dashboardPage');
             return;
         }
     }
@@ -16,14 +16,14 @@ class routeVerification extends baseController{
             session_start();
         }
         if(!isset($_SESSION['user_id'])){
-            $this->redirect('/cekRoutes/index');
+            $this->redirect('cekRoutes/index');
             return;
         }
         if($_SESSION['role'] !== 'admin'){
-            $this->redirect('/routeDashboard/dashboardPage');
+            $this->redirect('routeDashboard/dashboardPage');
             return;
         }
-        $this->redirect('/routeDashboard/dashboardAdmin');
+        $this->redirect('routeDashboard/dashboardAdmin');
     }
 }
 
