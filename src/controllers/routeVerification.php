@@ -4,10 +4,9 @@ class routeVerification extends baseController{
     public function dashboard(){
         if(session_status() == PHP_SESSION_NONE){
             session_start();
-        }
-        if(!isset($_SESSION['user_id'])){
-            $this->redirect('routeDashboard/dashboardPage');
-            return;
+        }else{
+            $this->redirect('cekRoutes/index');
+            exit;
         }
     }
 

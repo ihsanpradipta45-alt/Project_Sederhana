@@ -15,11 +15,6 @@ class baseController{
             header('Location:index.php?url='.ltrim($url,'/'));// disamakan wkatu kirim action pada html
             exit();
         }
-    
-    public function model($model){
-        require_once __DIR__.'/../models/'.$model.'.php';
-        return new $model;
-    }
 }
 
 

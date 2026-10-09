@@ -10,6 +10,7 @@ class  modelLogin{
 
     }
     public function login($email){
+        //disini ngecek email yang di input user apakah ada di database atau tidak
         $sql = "SELECT * FROM user WHERE email = ?";
         $stmt = mysqli_prepare($this->koneksi, $sql);
         mysqli_stmt_bind_param($stmt, "s", $email);

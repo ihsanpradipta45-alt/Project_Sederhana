@@ -72,7 +72,7 @@
       </div>
     </div>
 
-    <form class="form-panel">
+    <form class="form-panel" action="index.php?url=addBarang/logicAddBarang" method="POST" enctype="multipart/form-data">
 
       <div class="form-section">
         <h2>Informasi Dasar</h2>
@@ -80,25 +80,30 @@
 
         <div class="form-grid">
           <div class="form-field">
-            <label for="pname">Nama Produk <span class="required">*</span></label>
-            <input type="text" id="pname" placeholder="cth. Kursi Kantor Ergonomis">
+            <label for="namaProduk">Nama Produk <span class="required">*</span></label>
+            <input type="text" id="namaProduk" name="namaProduk" placeholder="cth. Kursi Kantor Ergonomis">
           </div>
           <div class="form-field">
-            <label for="sku">SKU (Stock Keeping Unit)</label>
-            <input type="text" id="sku" placeholder="cth. FUR-CHR-001">
+            <label for="stock">SKU (Stock Keeping Unit)</label>
+            <input type="text" id="stock" name="stok" placeholder="cth. FUR-CHR-001">
           </div>
           <div class="form-field">
             <label for="category">Kategori</label>
-            <select id="category">
-              <option>Pilih kategori</option>
-              <option>Elektronik</option>
-              <option>Furnitur</option>
-              <option>Aksesori</option>
+            <select id="category" name="kategori_id" required>
+                <option value="">Pilih kategori</option>
+                <option value="1">Elektronik</option>
+                <option value="2">Furniture</option>
+                <option value="3">Aksesoris</option>
             </select>
           </div>
           <div class="form-field">
-            <label for="supplier">Pemasok</label>
-            <input type="text" id="supplier" placeholder="Nama Pemasok">
+            <label for="id_produk">ID Produk</label>
+            <input type="text" id="idProduk" name="idProduk" placeholder="contoh: nama_category - 1">
+
+          </div>
+          <div class="form-field">
+            <label for="pemasok">Pemasok</label>
+            <input type="text" id="pemasok" name="namaPemasok" placeholder="Nama Pemasok">
           </div>
         </div>
       </div>
@@ -109,20 +114,25 @@
 
         <div class="form-grid">
           <div class="form-field">
-            <label for="buyprice">Harga Beli ($)</label>
-            <input type="text" id="buyprice" placeholder="0.00">
+            <label for="hargaBeli">Harga Beli ($)</label>
+            <input type="number"id="hargaBeli" name="hargaBeli" placeholder="0.00">
           </div>
           <div class="form-field">
-            <label for="sellprice">Harga Jual ($)</label>
-            <input type="text" id="sellprice" placeholder="0.00">
+            <label for="hargaJual">Harga Jual ($)</label>
+            <input type="number" id="hargaJual" name="hargaJual" placeholder="0.00">
           </div>
           <div class="form-field">
-            <label for="qty">Jumlah Awal</label>
-            <input type="text" id="qty" placeholder="0">
+            <label for="jumlahAwal">Jumlah Awal</label>
+            <input type="number" id="jumlahAwal" name="jumlahStokAwal" placeholder="0">
           </div>
           <div class="form-field full">
-            <label for="desc">Deskripsi Produk</label>
-            <textarea id="desc" placeholder="Deskripsi singkat produk..."></textarea>
+            <label for="masukan foto produk">foto produk</label>
+            <input type="file" id="fotoProduk" name="fotoProduk" accept="image/*">
+
+          </div>
+          <div class="form-field full">
+            <label for="deskripsiProduk">Deskripsi Produk</label>
+            <textarea id="deskripsiProduk" placeholder="Deskripsi singkat produk..." name="deskripsiProduk"></textarea>
           </div>
         </div>
       </div>

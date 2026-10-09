@@ -29,7 +29,6 @@ class addUser{
             mysqli_stmt_execute($insertStmt);
             return true;
 
-
         }
         
     }

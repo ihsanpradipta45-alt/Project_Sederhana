@@ -16,14 +16,13 @@ class Routes{
         $router->get('routeVerification/adminDashboard', ['routeVerification','adminDashboard']);
         $router->get('routeDashboard/dashboardAdmin', ['routeDashboard','dashboardAdmin']);
         $router->get('routeDashboard/addProduct',['routeDashboard','addProduct']);
-        $router->get('routeDashboard/dashboard',['routeDashboard','dashboard']);
         $router->get('routeDashboard/product',['routeDashboard','product']);
 
 
-        // ROUTE POST (proses data / submit form jika menggunakan method POST
+        // ROUTE POST (proses data / submit form jika menggunakan method POST)
         $router->post('loginAddUser/addUser', ['loginAddUser','addUser']);
         $router->post('loginConfiguration/login', ['loginConfiguration','login']);
-        //$router->post('routeAddUser/addUser', ['routeAddUser','addUser']);
+        $router->post('addBarang/logicAddBarang', ['addBarang','logicAddBarang']);
         //$router->post('routeVerification/adminDashboard', ['routeDashboard','adminDashboard']);
 
         $router->run();

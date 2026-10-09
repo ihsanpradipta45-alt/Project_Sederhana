@@ -19,9 +19,6 @@ public function addProduct(){
 public function product(){
     $this->view("dashboardPage/products");
 }
-public function dashboard(){
-    $this->view("dashboardPage/dashboard");
-}
 
 
 }
