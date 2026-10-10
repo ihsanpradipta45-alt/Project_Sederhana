@@ -104,6 +104,21 @@
           </tr>
         </thead>
         <tbody>
+          <?php if(empty($daftarBarang)):?>
+            <tr><td colspan="6">Belum ada Produk</td></tr>
+          <?php else: ?>
+            <?php foreach($daftarBarang as $barang): ?>
+              <?php
+                $stok = (int)$barang['stok_produk'];
+                if($stok = 0){
+                  $badge = 'badge-danger'; $status = 'stok habis';
+                }
+                elseif($stok <=10){
+                  $badge = 'badge-warning'; $status = 'stok menipis';
+                }else{
+                  $badge = 'badge-success'; $status = 'tersedia';
+                }
+              ?>
           <tr>
             <td class="sku-cell">PRD-001</td>
             <td>
