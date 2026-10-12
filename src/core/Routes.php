@@ -17,6 +17,9 @@ class Routes{
         $router->get('routeDashboard/dashboardAdmin', ['routeDashboard','dashboardAdmin']);
         $router->get('routeDashboard/addProduct',['routeDashboard','addProduct']);
         $router->get('routeDashboard/product',['routeDashboard','product']);
+        $router->get('tampilBarang/produk',['tampilBarang','produk']);
+        //$router->get('addBarang/logicAddBarang',['addBarang','logicAddBarang']);
+
 
 
         // ROUTE POST (proses data / submit form jika menggunakan method POST)

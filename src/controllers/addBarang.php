@@ -17,6 +17,7 @@ class addBarang extends baseController{
     }
 
     if($_SERVER['REQUEST_METHOD'] == 'POST'){
+        //nama post disini disesuaikan dengan name pada html
         $namaProduk      = $_POST['namaProduk'] ?? '';
         $kategori_id     = (int)($_POST['kategori_id'] ?? 0);
         $pemasok         = $_POST['namaPemasok'] ?? '';

@@ -16,9 +16,8 @@ public function dashboardAdmin(){
 public function addProduct(){
     $this->view("dashboardPage/addProduct");
 }
-public function product(){
-    $this->view("dashboardPage/products");
-}
+
+
 
 
 }

@@ -26,15 +26,15 @@
     </div>
 
     <nav class="nav">
-      <a class="nav-item" href="dashboard.html">
+      <a class="nav-item" href="index.php?url=routeDashboard/dashboard">
         <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1"></rect><rect x="14" y="3" width="7" height="7" rx="1"></rect><rect x="14" y="14" width="7" height="7" rx="1"></rect><rect x="3" y="14" width="7" height="7" rx="1"></rect></svg>
         Dashboard
       </a>
-      <a class="nav-item active" href="products.html">
+      <a class="nav-item active" href="index.php?url=tampilBarang/produk">
         <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="4" rx="1"></rect><rect x="4" y="10" width="16" height="10" rx="1"></rect><line x1="9" y1="14" x2="15" y2="14"></line></svg>
         Produk
       </a>
-      <a class="nav-item" href="#">
+      <a class="nav-item" href=#>
         <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2 3 7l9 5 9-5-9-5Z"></path><path d="m3 12 9 5 9-5"></path></svg>
         Kategori
       </a>
@@ -65,7 +65,7 @@
       </div>
       <div class="page-head-actions">
         <button class="btn btn-solid">
-          <svg class="icon" style="width:16px;height:16px" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+          <svg class="icon" href="index.php?url=routeDashboard/addProduct"style="width:16px;height:16px" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
           Tambah Produk
         </button>
       </div>
@@ -103,87 +103,46 @@
             <th>Aksi</th>
           </tr>
         </thead>
-        <tbody>
-          <?php if(empty($daftarBarang)):?>
-            <tr><td colspan="6">Belum ada Produk</td></tr>
-          <?php else: ?>
-            <?php foreach($daftarBarang as $barang): ?>
-              <?php
-                $stok = (int)$barang['stok_produk'];
-                if($stok = 0){
-                  $badge = 'badge-danger'; $status = 'stok habis';
-                }
-                elseif($stok <=10){
-                  $badge = 'badge-warning'; $status = 'stok menipis';
-                }else{
-                  $badge = 'badge-success'; $status = 'tersedia';
-                }
-              ?>
+          <tbody>
+            <?php if (empty($daftarBarang)): ?>
+            <tr><td colspan="7">Belum ada produk.</td></tr>
+            <?php else: ?>
+            <?php foreach ($daftarBarang as $barang): ?>
+            <?php
+              $stok = (int)$barang['stok_produk'];
+              if ($stok === 0) {
+              $badge = 'badge-danger';  $status = 'Habis';
+            } elseif ($stok <= 10) {
+              $badge = 'badge-warning'; $status = 'Stok Menipis';
+            } else {
+              $badge = 'badge-success'; $status = 'Tersedia';
+            }
+          ?>
           <tr>
-            <td class="sku-cell">PRD-001</td>
+            <td class="sku-cell">PRD-<?= str_pad((int)$barang['product_id'], 3, '0', STR_PAD_LEFT) ?></td>
             <td>
               <div class="product-cell">
                 <div class="thumb">
-                  <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="10" rx="2"></rect><line x1="6" y1="18" x2="18" y2="18"></line></svg>
+                  <?php if (!empty($barang['photo'])): ?>
+                    <img src="uploads/<?= htmlspecialchars($barang['photo']) ?>"
+                        alt="<?= htmlspecialchars($barang['nama_produk']) ?>"
+                        style="width:100%;height:100%;object-fit:cover;">
+                  <?php else: ?>
+                    <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="10" rx="2"></rect><line x1="6" y1="18" x2="18" y2="18"></line></svg>
+                  <?php endif; ?>
                 </div>
-                Ergo Pro Keyboard
+                <?= htmlspecialchars($barang['nama_produk']) ?>
               </div>
             </td>
-            <td>Elektronik</td>
-            <td>142</td>
-            <td>$129.99</td>
-            <td><span class="badge badge-success">Tersedia</span></td>
+            <td><?= htmlspecialchars($barang['nama_kategori_barang']) ?></td>
+            <td><?= $stok ?></td>
+            <td>Rp <?= number_format((int)$barang['harga_jual'], 0, ',', '.') ?></td>
+            <td><span class="badge <?= $badge ?>"><?= $status ?></span></td>
             <td></td>
-          </tr>
-          <tr>
-            <td class="sku-cell">PRD-002</td>
-            <td>
-              <div class="product-cell">
-                <div class="thumb">
-                  <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="10" width="16" height="4" rx="1"></rect><path d="M12 14v6"></path></svg>
-                </div>
-                Alum Stand V2
-              </div>
-            </td>
-            <td>Aksesori</td>
-            <td>0</td>
-            <td>$45.00</td>
-            <td><span class="badge badge-danger">Habis</span></td>
-            <td></td>
-          </tr>
-          <tr>
-            <td class="sku-cell">PRD-003</td>
-            <td>
-              <div class="product-cell">
-                <div class="thumb">
-                  <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 14v-3a9 9 0 0 1 18 0v3"></path><path d="M21 14a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-1a2 2 0 0 1 2-2h3Z"></path><path d="M3 14a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-1a2 2 0 0 0-2-2H3Z"></path></svg>
-                </div>
-                Silence X1 Headphones
-              </div>
-            </td>
-            <td>Audio</td>
-            <td>87</td>
-            <td>$299.50</td>
-            <td><span class="badge badge-success">Tersedia</span></td>
-            <td></td>
-          </tr>
-          <tr>
-            <td class="sku-cell">PRD-004</td>
-            <td>
-              <div class="product-cell">
-                <div class="thumb">
-                  <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="7" y="3" width="10" height="18" rx="5"></rect><line x1="12" y1="7" x2="12" y2="11"></line></svg>
-                </div>
-                VertiMouse Pro
-              </div>
-            </td>
-            <td>Elektronik</td>
-            <td>12</td>
-            <td>$75.00</td>
-            <td><span class="badge badge-warning">Stok Menipis</span></td>
-            <td></td>
-          </tr>
-        </tbody>
+            </tr>
+            <?php endforeach; ?>
+            <?php endif; ?>
+          </tbody>
       </table>
 
       <div class="pagination-bar">

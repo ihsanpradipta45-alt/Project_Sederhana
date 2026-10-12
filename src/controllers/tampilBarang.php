@@ -1,6 +1,6 @@
 <?php
 require_once __DIR__.'/../models/tambahBarang/menampilkanBarang.php';
-
+//digunakan untuk menampilkan sebuah nama barang
 class tampilBarang extends baseController{
     public function produk(){
         $barang = new menampilkanBarang();

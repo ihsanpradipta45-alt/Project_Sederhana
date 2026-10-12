@@ -12,6 +12,7 @@ class baseController{
     
 
     public function redirect($url){
+        // ini yang menyebabkan setiap action harus ada location index nya
             header('Location:index.php?url='.ltrim($url,'/'));// disamakan wkatu kirim action pada html
             exit();
         }

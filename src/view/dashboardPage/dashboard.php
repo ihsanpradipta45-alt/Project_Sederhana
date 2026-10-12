@@ -31,11 +31,13 @@
         <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1"></rect><rect x="14" y="3" width="7" height="7" rx="1"></rect><rect x="14" y="14" width="7" height="7" rx="1"></rect><rect x="3" y="14" width="7" height="7" rx="1"></rect></svg>
         Dashboard
       </a>
+      <!-- disini menggunakan method get karena digunakan untuk view untuk pindah halaman tambah product -->
       <a class="nav-item" href="index.php?url=routeDashboard/addProduct">
         <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="4" rx="1"></rect><rect x="4" y="10" width="16" height="10" rx="1"></rect><line x1="9" y1="14" x2="15" y2="14"></line></svg>
         Tambah Produk
       </a>
-      <a class="nav-item" href="index.php?url=routeDashboard/product">
+      <!-- disini menggunakan method get karena dia langsung menampilkan logika nya langsung -->
+      <a class="nav-item" href="index.php?url=tampilBarang/produk">
         <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="4" rx="1"></rect><rect x="4" y="10" width="16" height="10" rx="1"></rect><line x1="9" y1="14" x2="15" y2="14"></line></svg>
         Lihat Produk
       </a>
