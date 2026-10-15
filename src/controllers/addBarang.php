@@ -18,6 +18,7 @@ class addBarang extends baseController{
 
     if($_SERVER['REQUEST_METHOD'] == 'POST'){
         //nama post disini disesuaikan dengan name pada html
+        // menggunakan logika jika benar maka akan mengirimkan nilai dari post dan jika salah akan menggunakan nilai defaultnya
         $namaProduk      = $_POST['namaProduk'] ?? '';
         $kategori_id     = (int)($_POST['kategori_id'] ?? 0);
         $pemasok         = $_POST['namaPemasok'] ?? '';
@@ -51,7 +52,7 @@ class addBarang extends baseController{
 
         // pindahkan file
         $namaBaru   = uniqid('brg_',true) . '.' . $extension;
-        $targetPath = __DIR__.'/../uploads/'.$namaBaru;
+        $targetPath = __DIR__.'/../../public/uploads/'.$namaBaru;
         if(!move_uploaded_file($fotoProduk['tmp_name'], $targetPath)){
             die('gagal memindahkan file');
         }

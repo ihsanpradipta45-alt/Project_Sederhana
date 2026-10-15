@@ -4,6 +4,7 @@
 
 class Routes{
     public function run(){
+        // disini tidak membuat new objek dikarenakan sudah terload di autoload
         $router = new App();
         $router->defaultController('cekRoutes');
 

@@ -27,6 +27,7 @@ class loginConfiguration extends baseController {
                 $_SESSION['role'] = $user['role'];
                 $_SESSION['user_id'] = $user['user_id'];
                 $_SESSION['email'] = $user['email'];
+                //nambahain set cookie
 
                 if($user['role'] == 'admin'){
                     $this->redirect('/routeVerification/adminDashboard');

@@ -4,6 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Produk – Invenio Admin</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.3.1/css/all.min.css">
 <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
@@ -64,10 +65,10 @@
         <p>Kelola item inventaris dan level stok Anda.</p>
       </div>
       <div class="page-head-actions">
-        <button class="btn btn-solid">
-          <svg class="icon" href="index.php?url=routeDashboard/addProduct"style="width:16px;height:16px" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+        <a class="btn btn-solid" href="index.php?url=routeDashboard/addProduct">
+          <svg class="icon" style="width:16px;height:16px" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
           Tambah Produk
-        </button>
+        </a>
       </div>
     </div>
 
@@ -80,13 +81,9 @@
         <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="22 3 2 3 10 12.5 10 19 14 21 14 12.5 22 3"></polygon></svg>
         Kategori
       </button>
-      <button class="chip-btn">
-        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 11 3 3L22 4"></path><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"></path></svg>
-        Status
-      </button>
       <button class="chip-btn clear">
-        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"></path><path d="M3 3v5h5"></path></svg>
-        Hapus Filter
+        <i class="fa-solid fa-trash"></i>
+        Hapus salah satu produk
       </button>
     </div>
 
@@ -138,7 +135,15 @@
             <td><?= $stok ?></td>
             <td>Rp <?= number_format((int)$barang['harga_jual'], 0, ',', '.') ?></td>
             <td><span class="badge <?= $badge ?>"><?= $status ?></span></td>
-            <td></td>
+            <td>
+              <form action="index.php?url=hapusBarang/hapus" method="POST"
+              onsubmit="return confirm('yakin ingin menghapus : <?=htmlspecialchars($barang['nama_kategori_barang'],ENT_QUOTES)?>')">
+              <input type="hidden" name="product_id" value="<?= (int)$barang['product_id']?>">
+              <button type="submit" class="btn-icon danger">
+                <i class="fa-solid fa-trash"></i>
+              </button>
+              </form>
+            </td>
             </tr>
             <?php endforeach; ?>
             <?php endif; ?>
@@ -146,19 +151,7 @@
       </table>
 
       <div class="pagination-bar">
-        <span>Menampilkan 1 sampai 4 dari 24 hasil</span>
         <div class="pagination">
-          <button class="page-btn nav">
-            <svg class="icon" style="width:16px;height:16px" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>
-          </button>
-          <button class="page-btn active">1</button>
-          <button class="page-btn">2</button>
-          <button class="page-btn">3</button>
-          <span class="page-btn dots">…</span>
-          <button class="page-btn">6</button>
-          <button class="page-btn nav">
-            <svg class="icon" style="width:16px;height:16px" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
-          </button>
         </div>
       </div>
     </div>
