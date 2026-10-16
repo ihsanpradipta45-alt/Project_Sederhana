@@ -13,7 +13,7 @@ class addBarang extends baseController{
     public function logicAddBarang(){
     $user_id = (int)($_SESSION['user_id'] ?? 0);
     if ($user_id <= 0) {
-        die('Silakan login terlebih dahulu');
+        $this->redirect('cekRoutes/index');
     }
 
     if($_SERVER['REQUEST_METHOD'] == 'POST'){

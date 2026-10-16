@@ -30,9 +30,9 @@ class loginConfiguration extends baseController {
                 //nambahain set cookie
 
                 if($user['role'] == 'admin'){
-                    $this->redirect('/routeVerification/adminDashboard');
+                    $this->redirect('routeVerification/adminDashboard');
                 } else {
-                    $this->redirect('/routeDashboard/dashboardPage');
+                    $this->redirect('routeDashboard/dashboardPage');
                 }
             }
         }

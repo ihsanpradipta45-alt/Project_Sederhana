@@ -10,7 +10,7 @@ class hapusBarang{
         $this->koneksi = $db->connect();
     }
 
-    public function hapusBarang($product_id){
+    public function delete($product_id){
         // alasan  setelah where yang buat nyocokin itu kosong karena mau digunakan di bind_param
         $sql = 'SELECT * FROM products WHERE product_id = ?';
         $stmt = mysqli_prepare($this->koneksi,$sql);
@@ -31,9 +31,8 @@ class hapusBarang{
             if(!empty($rowInBarang['image'])){
                 $path = __DIR__ .'/../../public/uploads'.basename($rowInBarang['image']);
                 unlink($path);
-
-
             }
+            return $hasil;
         }
 
 
