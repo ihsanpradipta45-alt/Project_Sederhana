@@ -13,20 +13,28 @@ class deleteItem extends baseController{
 
     }
 public function hapus(){
-    $user_id = (int)($_SESSION['user_id'] ?? 0);
-    if($user_id < 0){
+    if($_SERVER['REQUEST_METHOD'] === 'POST'){
+        $user_id = (int)($_SESSION['user_id'] ?? 0);
+        $product_id = (int)($_POST['product_id'] ?? 0);
+
+        if($user_id <= 0 || $product_id <= 0){
+            $this->redirect('cekRoutes/index');
+            return;
+        }
+
+        require_once __DIR__ .'/../models/hapusBarang/hapusBarang.php';
+        $barang = new hapusBarang();
+        $berhasil = $barang->delete($product_id);
+
+        if($berhasil){
+            $this->redirect('routeDashboard/dashboardPage');
+        } else {
+            die('barang gagal dihapus');
+        }
+    } else {
         $this->redirect('cekRoutes/index');
-    $barang_id = (int)($_POST['product_id']);
-    if(!isset($barang_id)){
-        die('barang tidak di temukan');
-    }else{
-        require_once __DIR__.'/../models/hapusBarang/hapusBarang.php';
-        $hapus = new hapusBarang();
-        $barang = $hapus->delete($barang_id);
-        
-
     }
-    }
+}
 
     
     
@@ -34,7 +42,7 @@ public function hapus(){
         
     
 
-}
+
 
 
 

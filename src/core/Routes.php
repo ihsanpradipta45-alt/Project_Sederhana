@@ -27,8 +27,8 @@ class Routes{
         $router->post('loginAddUser/addUser', ['loginAddUser','addUser']);
         $router->post('loginConfiguration/login', ['loginConfiguration','login']);
         $router->post('addBarang/logicAddBarang', ['addBarang','logicAddBarang']);
-        //$router->post('routeVerification/adminDashboard', ['routeDashboard','adminDashboard']);
-
+        $router->post('routeVerification/adminDashboard', ['routeDashboard','adminDashboard']);
+        $router->post('deleteItem/hapus',['deleteItem','hapus']);
         $router->run();
     }
 }

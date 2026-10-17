@@ -18,7 +18,7 @@ class hapusBarang{
         mysqli_execute($stmt);
         $result = mysqli_stmt_get_result($stmt);
         $rowInBarang = mysqli_fetch_assoc($result);
-        if(! $rowInBarang){
+        if(!$rowInBarang){
             die("barang tidak ada");
         }else{
             $sql = 'DELETE FROM products WHERE product_id = ?';

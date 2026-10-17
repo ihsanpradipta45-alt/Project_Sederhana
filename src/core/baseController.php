@@ -4,6 +4,7 @@
 class baseController{
     // $view untuk menampilkan view nya
     // $data [] untuk parameter data yang dikirimkan
+    //view disini cuma berfungsi untuk 
     public function view($view, $data = []){
     // kalo misal ada file nya maka akan mengarahlan ke file tsb
         extract($data);

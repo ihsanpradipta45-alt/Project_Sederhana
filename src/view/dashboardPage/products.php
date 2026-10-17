@@ -136,7 +136,7 @@
             <td>Rp <?= number_format((int)$barang['harga_jual'], 0, ',', '.') ?></td>
             <td><span class="badge <?= $badge ?>"><?= $status ?></span></td>
             <td>
-              <form action="index.php?url=hapusBarang/hapus" method="POST"
+              <form action="index.php?url=deleteItem/hapus" method="POST"
               onsubmit="return confirm('yakin ingin menghapus : <?=htmlspecialchars($barang['nama_kategori_barang'],ENT_QUOTES)?>')">
               <input type="hidden" name="product_id" value="<?= (int)$barang['product_id']?>">
               <button type="submit" class="btn-icon danger">
