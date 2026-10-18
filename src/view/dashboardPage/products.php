@@ -27,7 +27,7 @@
     </div>
 
     <nav class="nav">
-      <a class="nav-item" href="index.php?url=routeDashboard/dashboard">
+      <a class="nav-item" href="index.php?url=routeDashboard/dashboardPage">
         <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1"></rect><rect x="14" y="3" width="7" height="7" rx="1"></rect><rect x="14" y="14" width="7" height="7" rx="1"></rect><rect x="3" y="14" width="7" height="7" rx="1"></rect></svg>
         Dashboard
       </a>
@@ -97,6 +97,7 @@
             <th>Jumlah</th>
             <th>Harga</th>
             <th>Status</th>
+            <th>Deskripsi Produk</th>
             <th>Aksi</th>
           </tr>
         </thead>
@@ -134,6 +135,7 @@
             <td><?= htmlspecialchars($barang['nama_kategori_barang']) ?></td>
             <td><?= $stok ?></td>
             <td>Rp <?= number_format((int)$barang['harga_jual'], 0, ',', '.') ?></td>
+            <td><?=htmlspecialchars($barang['deskripsi_produk'])?></td>
             <td><span class="badge <?= $badge ?>"><?= $status ?></span></td>
             <td>
               <form action="index.php?url=deleteItem/hapus" method="POST"

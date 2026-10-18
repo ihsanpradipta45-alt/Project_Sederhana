@@ -1,6 +1,5 @@
 <?php
 require_once __DIR__.'/../config/loadConnection.php';
-
 if(session_status() == PHP_SESSION_NONE){
     session_start();
 }
@@ -27,17 +26,19 @@ public function hapus(){
         $berhasil = $barang->delete($product_id);
 
         if($berhasil){
+            $_SESSION['flash'] = ["tipe" => 'berhasil' , "pesan" => 'item berhasil dihapus'];
             $this->redirect('routeDashboard/dashboardPage');
         } else {
-            die('barang gagal dihapus');
+            $_SESSION['flash'] = ["tipe" => 'tidak berhasil' , "pesan" => 'item gagal dihapus'];
+            $this->redirect('routeDashboard/dashboardPage');
         }
-    } else {
-        $this->redirect('cekRoutes/index');
+        return;
+    
     }
-}
 
     
     
+}
 }
         
     

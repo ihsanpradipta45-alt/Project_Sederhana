@@ -84,7 +84,11 @@
         </div>
       </div>
     </div>
-
+    <?php if(!empty($_SESSION['flash'])): ?>
+      <div class="alert alert-<?= htmlspecialchars($_SESSION['flash']['tipe'])?>"></div>
+      <?= htmlspecialchars($_SESSION['flash']['pesan'])?>
+    <?php unset($_SESSION['flash'])?>
+    <?php endif;?>
     <div class="page-head">
       <div>
         <h1>Ringkasan</h1>
