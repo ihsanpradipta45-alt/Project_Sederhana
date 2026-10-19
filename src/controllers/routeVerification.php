@@ -1,14 +1,6 @@
 <?php
 //file ini berfungsi untuk pengecekan authentication ulang
 class routeVerification extends baseController{
-    public function dashboard(){
-        if(session_status() == PHP_SESSION_NONE){
-            session_start();
-        }else{
-            $this->redirect('cekRoutes/index');
-            exit;
-        }
-    }
 
     public function adminDashboard(){
         if(session_status() == PHP_SESSION_NONE){

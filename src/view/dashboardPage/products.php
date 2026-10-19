@@ -35,7 +35,7 @@
         <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="4" rx="1"></rect><rect x="4" y="10" width="16" height="10" rx="1"></rect><line x1="9" y1="14" x2="15" y2="14"></line></svg>
         Produk
       </a>
-      <a class="nav-item" href=#>
+      <a class="nav-item" href="index.php?url=logOut/logout">
         <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2 3 7l9 5 9-5-9-5Z"></path><path d="m3 12 9 5 9-5"></path></svg>
         Kategori
       </a>
@@ -91,7 +91,7 @@
       <table>
         <thead>
           <tr>
-            <th>SKU</th>
+            <th>idProduk</th>
             <th>Nama Produk</th>
             <th>Kategori</th>
             <th>Jumlah</th>
@@ -109,11 +109,11 @@
             <?php
               $stok = (int)$barang['stok_produk'];
               if ($stok === 0) {
-              $badge = 'badge-danger';  $status = 'Habis';
+              $badge = 'badge-danger';  $status = 'stok habis';
             } elseif ($stok <= 10) {
-              $badge = 'badge-warning'; $status = 'Stok Menipis';
+              $badge = 'badge-warning'; $status = 'stok menipis';
             } else {
-              $badge = 'badge-success'; $status = 'Tersedia';
+              $badge = 'badge-success'; $status = 'stok tersedia';
             }
           ?>
           <tr>

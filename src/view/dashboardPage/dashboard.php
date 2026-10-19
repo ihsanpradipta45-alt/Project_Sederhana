@@ -56,7 +56,7 @@
     </nav>
 
     <div class="nav-footer">
-      <a class="nav-item" href="index.php">
+      <a class="nav-item" href="index.php?url=logOut/logout">
         <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path><polyline points="16 17 21 12 16 7"></polyline><line x1="21" y1="12" x2="9" y2="12"></line></svg>
         Keluar
       </a>
@@ -84,11 +84,15 @@
         </div>
       </div>
     </div>
-    <?php if(!empty($_SESSION['flash'])): ?>
-      <div class="alert alert-<?= htmlspecialchars($_SESSION['flash']['tipe'])?>"></div>
-      <?= htmlspecialchars($_SESSION['flash']['pesan'])?>
-    <?php unset($_SESSION['flash'])?>
-    <?php endif;?>
+
+    <!-- Flash message -->
+    <?php if (!empty($_SESSION['flash'])): ?>
+      <div class="alert alert-<?= htmlspecialchars($_SESSION['flash']['tipe']) ?>">
+        <?= htmlspecialchars($_SESSION['flash']['pesan']) ?>
+      </div>
+      <?php unset($_SESSION['flash']); ?>
+    <?php endif; ?>
+
     <div class="page-head">
       <div>
         <h1>Ringkasan</h1>
@@ -164,73 +168,56 @@
           <h2>Produk Baru Ditambahkan</h2>
           <a class="panel-link" href="index.php?url=routeDashboard/product">Lihat Semua</a>
         </div>
+
         <table>
           <thead>
             <tr>
+              <th>ID Produk</th>
               <th>Nama Produk</th>
-              <th>SKU</th>
               <th>Kategori</th>
               <th>Stok</th>
               <th>Status</th>
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <td>
-                <div class="product-cell">
-                  <div class="thumb">
-                    <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="12" rx="2"></rect><line x1="8" y1="20" x2="16" y2="20"></line></svg>
-                  </div>
-                  Quantum XPS 13
-                </div>
-              </td>
-              <td>LPT-4592</td>
-              <td>Elektronik</td>
-              <td>145</td>
-              <td><span class="badge badge-success">Tersedia</span></td>
-            </tr>
-            <tr>
-              <td>
-                <div class="product-cell">
-                  <div class="thumb">
-                    <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="7" rx="1"></rect><path d="M6 11V8a6 6 0 0 1 12 0v3"></path></svg>
-                  </div>
-                  Ergo Task Chair V2
-                </div>
-              </td>
-              <td>FUR-1029</td>
-              <td>Furnitur</td>
-              <td>12</td>
-              <td><span class="badge badge-danger">Stok Menipis</span></td>
-            </tr>
-            <tr>
-              <td>
-                <div class="product-cell">
-                  <div class="thumb">
-                    <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="2" width="16" height="20" rx="2"></rect><line x1="8" y1="6" x2="16" y2="6"></line></svg>
-                  </div>
-                  Industrial Brew Pro
-                </div>
-              </td>
-              <td>APP-8831</td>
-              <td>Elektronik Rumah</td>
-              <td>0</td>
-              <td><span class="badge badge-neutral">Habis</span></td>
-            </tr>
-            <tr>
-              <td>
-                <div class="product-cell">
-                  <div class="thumb">
-                    <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="13" rx="2"></rect><line x1="8" y1="21" x2="16" y2="21"></line><line x1="12" y1="17" x2="12" y2="21"></line></svg>
-                  </div>
-                  UltraWide 34" Display
-                </div>
-              </td>
-              <td>MON-3400</td>
-              <td>Elektronik</td>
-              <td>89</td>
-              <td><span class="badge badge-success">Tersedia</span></td>
-            </tr>
+            <?php if (empty($barangProduk)): ?>
+              <tr>
+                <td colspan="5">Belum ada produk yang ditambahkan</td>
+              </tr>
+            <?php else: ?>
+              <?php foreach ($barangProduk as $produk): ?>
+                <?php
+                  $stok = (int)$produk['stok_produk'];
+                  if ($stok === 0) {
+                    $badge = 'badge-danger';  $status = 'Stok Habis';
+                  } elseif ($stok <= 10) {
+                    $badge = 'badge-warning'; $status = 'Stok Menipis';
+                  } else {
+                    $badge = 'badge-success'; $status = 'Stok Tersedia';
+                  }
+                ?>
+                <tr>
+                  <td class="sku-cell">PRD-<?= str_pad((int)$produk['produk_id'], 3, '0', STR_PAD_LEFT) ?></td>
+                  <td>
+                    <div class="product-cell">
+                      <div class="thumb">
+                        <?php if (!empty($produk['photo'])): ?>
+                          <img src="uploads/<?= htmlspecialchars($produk['photo']) ?>"
+                               alt="<?= htmlspecialchars($produk['nama_produk']) ?>"
+                               style="width:100%;height:100%;object-fit:cover;">
+                        <?php else: ?>
+                          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="12" rx="2"></rect><line x1="8" y1="20" x2="16" y2="20"></line></svg>
+                        <?php endif; ?>
+                      </div>
+                      <?= htmlspecialchars($produk['nama_produk']) ?>
+                    </div>
+                  </td>
+                  <td><?= htmlspecialchars($produk['nama_kategori_barang']) ?></td>
+                  <td><?= $stok ?></td>
+                  <td><span class="badge <?= $badge ?>"><?= $status ?></span></td>
+                </tr>
+              <?php endforeach; ?>
+            <?php endif; ?>
           </tbody>
         </table>
       </div>

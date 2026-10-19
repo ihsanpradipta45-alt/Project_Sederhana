@@ -10,6 +10,11 @@ class tampilBarang extends baseController{
         // dan dijalankan secara berulang-ulang
         $this->view("dashboardPage/products",['daftarBarang' =>$daftarBarang]);
     }
+    public function produkDashboard(){
+        $barang = new menampilkanBarang();
+        $barangProduk = $barang->getBarang();
+        $this->view("dashboardPage/dashboard",["barangProduk" =>$barangProduk]);
+    }
 
 }
 

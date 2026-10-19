@@ -19,6 +19,7 @@ class Routes{
         $router->get('routeDashboard/addProduct',['routeDashboard','addProduct']);
         $router->get('routeDashboard/product',['routeDashboard','product']);
         $router->get('tampilBarang/produk',['tampilBarang','produk']);
+        $router->get('logOut/logout',['logOut','logout']);
         //$router->get('addBarang/logicAddBarang',['addBarang','logicAddBarang']);
 
 
