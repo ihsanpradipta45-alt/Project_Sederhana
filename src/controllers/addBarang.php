@@ -28,6 +28,7 @@ public function logicAddBarang(){
         'hargaBeli'       => (int)($_POST['hargaBeli'] ?? 0),
         'hargaJual'       => (int)($_POST['hargaJual'] ?? 0),
         'jumlahAwal'      => (int)($_POST['jumlahStokAwal'] ?? 0),
+        'stok'            => (int)($_POST['stok'] ?? 0),
         'deskripsiProduk' => trim($_POST['deskripsiProduk'] ?? ''),
     ];
     $fotoProduk = $_FILES['fotoProduk'] ?? null;
@@ -51,7 +52,7 @@ public function logicAddBarang(){
     require_once __DIR__.'/../models/tambahBarang/modelsTambahBarang.php';
     $modelsBarang = new modelsTambahBarang();
     $barang = $modelsBarang->tambahBarang(
-        $data['kategori_id'], $user_id, $data['namaProduk'], $data['jumlahAwal'],
+        $data['kategori_id'], $user_id, $data['namaProduk'], $data['stok'],
         $data['pemasok'], $data['hargaBeli'], $data['hargaJual'],
         $data['jumlahAwal'], $data['deskripsiProduk'], $namaBaru
     );
@@ -74,6 +75,9 @@ private function validasiProduk($data, $fotoProduk){
     }
     if ($fotoProduk === null || $fotoProduk['error'] !== UPLOAD_ERR_OK) {
         return 'Gagal upload foto';
+    }
+    if($data['stok'] === ''){
+        return "stok tidak boleh kosong";
     }
 
     $extension = strtolower(pathinfo($fotoProduk['name'], PATHINFO_EXTENSION));

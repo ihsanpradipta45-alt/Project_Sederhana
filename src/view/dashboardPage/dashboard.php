@@ -79,7 +79,7 @@
           <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8Z"></path></svg>
         </button>
         <div class="profile-chip">
-          <img class="avatar" src="https://i.pravatar.cc/64?img=47" alt="Foto profil">
+          <img class="avatar" src="" alt="Foto profil">
           <span>Profil</span>
         </div>
       </div>
@@ -118,16 +118,20 @@
             <svg class="icon" style="width:18px;height:18px" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="4" rx="1"></rect><rect x="4" y="10" width="16" height="10" rx="1"></rect><line x1="9" y1="14" x2="15" y2="14"></line></svg>
           </div>
         </div>
-        <div class="stat-value">12.450</div>
-        <div class="stat-foot positive">
-          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"></polyline><polyline points="17 6 23 6 23 12"></polyline></svg>
-          +12% dari bulan lalu
-        </div>
+        <?php foreach($barangProduk as $barang) :?>
+        <?php $jumlahStok = $barang['jumlah_stok_awal'] + $barang['stok_produk']; ?>
+        <div class="stat-value"><?= $jumlahStok?></div>
       </div>
-
       <div class="stat-card">
         <div class="stat-card-top">
-          <span class="stat-label">Stok Menipis</span>
+          <?php $stok = $barang['stok_produk'];
+          if($stok > $barang['jumlah_stok_awal']){
+            $status = "Stok Tersedia";
+          }elseif($stok < $barang['jumlah_stok_awal']){
+            $status = "Stok Habis";
+          }
+          ?>
+          <span class="stat-label"><?=$status?></span>
           <div class="stat-icon red">
             <svg class="icon" style="width:18px;height:18px" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m21.7 18-8-14a2 2 0 0 0-3.4 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.7-3Z"></path><line x1="12" y1="9" x2="12" y2="13"></line><line x1="12" y1="17" x2="12.01" y2="17"></line></svg>
           </div>

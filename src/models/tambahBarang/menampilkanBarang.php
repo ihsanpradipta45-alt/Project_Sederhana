@@ -9,7 +9,7 @@ class menampilkanBarang{
     }
 
     public function getBarang(){
-    $sql = "SELECT p.product_id,p.nama_produk,p.stok_produk,p.deskripsi_produk,
+    $sql = "SELECT p.product_id,p.nama_produk,p.stok_produk,p.jumlah_stok_awal,p.deskripsi_produk,
     p.photo,p.harga_jual,c.name AS nama_kategori_barang
     FROM product p
     INNER JOIN category c ON c.category_id = p.category_id
